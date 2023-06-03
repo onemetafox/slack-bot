@@ -1,0 +1,23 @@
+{
+  "name": "whale-slack-bot",
+  "version": "1.0.0",
+  "description": "A simple Slack bot that displays the transactions of several chains by using the Whale-alert-api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BolajiAyodeji/slackbot.git"
+  },
+  "author": "Todaycodemaster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BolajiAyodeji/slackbot/issues"
+  },
+  "homepage": "https://github.com/BolajiAyodeji/slackbot#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "slackbots": "^1.3.0"
+  }
+}
