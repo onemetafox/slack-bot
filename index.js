@@ -28,11 +28,11 @@ bot.on('error', (err) => {
 })
 
 // Message Handler
-bot.on('message', (data) => {
-    if(data.type !== 'message') {
-        return;
-    }
-    handleMessage(data.text);
+bot.on('start', (data) => {
+    // if(data.type !== 'message') {
+    //     return;
+    // }
+    handleMessage("random jok");
 })
 
 // Response Handler
