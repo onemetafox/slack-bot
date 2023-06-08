@@ -21,7 +21,6 @@ params.transaction_type = "transfer";
 
 setInterval(()=>{
     params.start = Math.floor(Date.now() / 1000) - 3600;
-    console.log(params)
     axios.get('https://api.whale-alert.io/v1/transactions', {params})
     .then(res => {
         const transactions = res.data.transactions;
@@ -40,7 +39,7 @@ setInterval(()=>{
         });
     })
     
-}, 5000)
+}, 10000)
 // bot.on('start', () => {
 //     const params = {
 //         icon_emoji: ':robot_face:'
