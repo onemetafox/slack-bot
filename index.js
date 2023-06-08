@@ -3,7 +3,7 @@ const axios = require('axios')
 const dotenv = require('dotenv')
 
 dotenv.config()
-
+const time_space = 10000;
 const bot = new SlackBot({
     token: `${process.env.BOT_TOKEN}`,
     name: 'Whale Bot'
@@ -18,39 +18,30 @@ params.currency = "btc";
 params.api_key = process.env.API_KEY;
 params.transaction_type = "transfer";
 
-
-setInterval(()=>{
-    params.start = Math.floor(Date.now() / 1000) - 3600;
-    axios.get('https://api.whale-alert.io/v1/transactions', {params})
-    .then(res => {
-        const transactions = res.data.transactions;
-        transactions.forEach(transaction => {
-            bot.on('start', () => {
-                const params = {
+bot.on('start', () => {
+    setInterval(()=>{
+        params.start = Math.floor(Date.now() / 1000) - 3600;
+        params.end = params.start + time_space
+        console.log(params);
+        axios.get('https://api.whale-alert.io/v1/transactions', {params})
+        .then(res => {
+            const transactions = res.data.transactions;
+            transactions.forEach(transaction => {
+                const filter = {
                     icon_emoji: ':robot_face:'
                 }
 
                 bot.postMessageToChannel(
                     'random',
                     transaction.amount + " #BTC ("+transaction.amount_usd+"USD) \n transferred from " + transaction.from.address ,
-                    params
+                    filter
                 );
-            })
-        });
-    })
+            });
+        })
+        
+    }, 10000)
     
-}, 10000)
-// bot.on('start', () => {
-//     const params = {
-//         icon_emoji: ':robot_face:'
-//     }
-
-//     bot.postMessageToChannel(
-//         'random',
-//         'Get inspired while working with @inspirenuggets',
-//         params
-//     );
-// })
+})
 
 // // Error Handler
 // bot.on('error', (err) => {
