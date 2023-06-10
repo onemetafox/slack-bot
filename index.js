@@ -31,7 +31,7 @@ bot.on('start', () => {
                 }
                 bot.postMessageToChannel(
                     'random',
-                    transaction.amount + " #BTC ("+transaction.amount_usd+"USD)  transferred \n from <https://blockchair.com/bitcoin/address/"+transaction.from.address+"|"+transaction.from.address+"> \n to <https://blockchair.com/bitcoin/address/"+transaction.to.address+"|"+transaction.to.address+"> \n <https://blockchair.com/bitcoin/transaction/"+transaction.hash+"| transaction>"  ,
+                    transaction.amount + " #BTC ("+transaction.amount_usd+"USD)  transferred \n from <https://blockchair.com/bitcoin/address/"+transaction.from.address+"|"+transaction.from.address+"> \n to <https://blockchair.com/bitcoin/address/"+transaction.to.address+"|"+transaction.to.address+"> \n <https://blockchair.com/bitcoin/transaction/"+transaction.hash+"| View transaction>"  ,
                     filter
                 );
                 return;
